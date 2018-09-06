@@ -24,7 +24,6 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    // set success message and pass true paramater to persist the message after redirecting to the login page
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },

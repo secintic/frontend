@@ -2,14 +2,15 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-      <li routerLinkActive="active"><a routerLink="/user">User</a></li>
-      <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+      <li routerLinkActive="active" *ngIf="authenticated"><a routerLink="/user">User</a></li>
+      <li routerLinkActive="active" *ngIf="isAdminUser"><a routerLink="/admin">Admin</a></li>
+      <li routerLinkActive="active" *ngIf="!authenticated"><a routerLink="/login">Login</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
       <p class="navbar-text" *ngIf="isUser">You are user!</p>
-      <li><button class="btn navbar-btn" (click)="logout()">Logout</button></li>
+      <li><button class="btn navbar-btn" (click)="logout()"  *ngIf="authenticated">Logout</button></li>
     </ul>
   </div>
 </nav>

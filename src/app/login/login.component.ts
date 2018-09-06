@@ -16,10 +16,8 @@ export class LoginComponent implements OnInit {
   redirectUrl: string;
 
   constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
               private authenticationService: AuthenticationService,
               private userService: UserService) {
-    this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
   }
 
   ngOnInit(): void {
@@ -49,10 +47,9 @@ export class LoginComponent implements OnInit {
   }
 
   private navigateAfterSuccess() {
-    if (this.redirectUrl) {
-      this.router.navigateByUrl(this.redirectUrl);
-    } else {
-      this.router.navigate(['/']);
-    }
+    if(this.userService.isAdmin)
+      this.router.navigate(['/admin']);
+    else
+      this.router.navigate(['/user']);
   }
 }

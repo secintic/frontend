@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
-import {AuthHttp} from 'angular2-jwt';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AppDataService {
-  constructor(private http: AuthHttp) {
+  constructor(private http: HttpClient) {
   }
 
   getCities() {
-    return this.http.get('/springjwt/app/cities').map(res => res.json());
+    return this.http.get('/springjwt/app/cities');
   }
-
   getUsers() {
-    return this.http.get('/springjwt/app/users').map(res => res.json());
+    return this.http.get('/springjwt/app/users');
   }
 }

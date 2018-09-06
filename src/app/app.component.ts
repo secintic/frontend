@@ -22,7 +22,10 @@ export class AppComponent {
 
   logout() {
     this.userService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
+  }
+  get authenticated(){
+    return this.userService.isAuthed();
   }
 
   get isAdminUser() {
